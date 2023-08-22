@@ -1,0 +1,1 @@
+# Projeto utilizando SKLearn do Python para adivinhar por Machine Learning se é 'Porco' ou 'Cachorro'
