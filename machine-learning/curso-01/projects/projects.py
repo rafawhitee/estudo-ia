@@ -9,13 +9,16 @@ from sklearn.model_selection import train_test_split
 source = pd.read_csv('projects.csv')
 source['finished'] = source.unfinished.map({0: 1, 1: 0})
 sns.scatterplot(x="expected_hours", y="price", hue="finished", data=source)
+plt.show()
 
 x = source[['expected_hours', 'price']]
 y = source['finished']
 
 SEED = 20
+np.random.seed(SEED)
+
 train_x, test_x, train_y, test_y = train_test_split(
-    x, y, stratify=y, random_state=SEED, test_size=0.25)
+    x, y, stratify=y, test_size=0.25)
 
 model = LinearSVC(dual='auto')
 model.fit(train_x, train_y)
@@ -57,6 +60,6 @@ points = np.c_[xx.ravel(), yy.ravel()]
 Z = model.predict(points)
 Z = Z.reshape(xx.shape)
 
-plt.contourf(xx, yy, Z, alpha=0.2)
+plt.contourf(xx, yy, Z, alpha=0.3)
 plt.scatter(test_x.expected_hours, test_x.price, c=test_y, s=1)
 plt.show()
