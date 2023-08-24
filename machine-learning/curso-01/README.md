@@ -16,3 +16,10 @@ E se repararmos no gráfico inicial dos dados dos projetos, ele forma uma curva,
 Só que o SVC tem um pequeno problema: a diferença de escala é muito grande, no Eixo X ia de 0 até 1, mas no Y ia de 0 até 30.000.
 
 Então além do SVC, utilizamos também o StandardScaler que ele muda as escalas para deixar mais próximos.
+
+### Cars
+Com o Machine Learning e usando o SVC (não linear) a partir de um CSV de quantos Milhas ele rodou por ano, o ano do modelo e o preço para ser vendido
+
+Basicamente o Machine learning vai estimar se o carro vai ser vendido ou não dependendo do Preço e de quantos KM ele rodou
+
+E também tem um exemplo usando Árvore de Decisões (esse caso não precisa reescalar os valores)
