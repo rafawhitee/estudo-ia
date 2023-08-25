@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
 
@@ -7,28 +8,38 @@ from sklearn.metrics import accuracy_score
 # late?
 
 # cachorros
-animal_1 = [0, 1, 1]
-animal_2 = [0, 1, 1]
-animal_3 = [1, 1, 1]
-animal_4 = [0, 0, 1]
-animal_5 = [1, 1, 1]
-animal_6 = [1, 1, 1]
-animal_7 = [1, 1, 1]
-animal_8 = [0, 0, 1]
+train_x  = []
+train_x.append([0, 1, 1])
+train_x.append([0, 1, 1])
+train_x.append([1, 1, 1])
+train_x.append([0, 0, 1])
+train_x.append([1, 1, 1])
+train_x.append([1, 1, 1])
+train_x.append([1, 1, 1])
+train_x.append([0, 0, 1])
+train_x.append([1, 1, 1])
+train_x.append([1, 1, 1])
+train_x.append([0, 0, 1])
 
 # porcos
-animal_9 = [0, 1, 0]
-animal_10 = [1, 0, 0]
-animal_11 = [1, 1, 0]
-animal_12 = [0, 0, 0]
+train_x.append([0, 1, 0])
+train_x.append([1, 0, 0])
+train_x.append([1, 1, 0])
+train_x.append([0, 0, 1])
+train_x.append([0, 0, 0])
+train_x.append([0, 1, 0])
+train_x.append([0, 0, 0])
+train_x.append([0, 1, 1])
+train_x.append([1, 0, 0])
+train_x.append([0, 1, 0])
+train_x.append([1, 1, 1])
 
-# cria uma lista com os animais acima
-train_x = [animal_1, animal_2, animal_3, animal_4, animal_5, animal_6,
-           animal_7, animal_8, animal_9, animal_10, animal_11, animal_12]
 
 # 0 --> cachorro
 # 1 --> porco
-train_y = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]  # labels
+qt_dogs = 11
+qt_pigs = 11
+train_y = np.zeros(qt_dogs).tolist() + np.ones(qt_pigs).tolist()  # labels
 
 # inicia o estimador do sklearn (para aprender sobre os dados)
 model = LinearSVC(dual='auto')
@@ -37,33 +48,36 @@ model = LinearSVC(dual='auto')
 model.fit(train_x, train_y)
 
 # cria um animal misterioso com as características
-animal_misterioso_0 = [1, 1, 1]
+unique_test_x = [1, 1, 1]
 
 # pergunta ao modelo com a estimativa (se é cachorro ou porco)
-print(f"Predict Único --> {model.predict([animal_misterioso_0])[0]}")
-
-# cria alguns animais misteriosos (não sabe se é Porco ou Cachorro)
-animal_misterioso_1 = [1, 0, 0]
-animal_misterioso_2 = [1, 1, 1]
-animal_misterioso_3 = [1, 0, 1]
-animal_misterioso_4 = [1, 1, 0]
-animal_misterioso_5 = [0, 1, 0]
-animal_misterioso_6 = [0, 0, 0]
-animal_misterioso_7 = [0, 1, 0]
-animal_misterioso_8 = [0, 1, 1]
+print(f"Predict Único --> {model.predict([unique_test_x])[0]}")
 
 # teste x --> o que será validado para verificar se está correto
-teste_x = [animal_misterioso_1, animal_misterioso_2, animal_misterioso_3, animal_misterioso_4,
-           animal_misterioso_5, animal_misterioso_6, animal_misterioso_7, animal_misterioso_8]
+test_x = []
+test_x.append([1, 0, 0])
+test_x.append([1, 1, 1])
+test_x.append([1, 0, 1])
+test_x.append([1, 1, 0])
+test_x.append([0, 1, 0])
+test_x.append([0, 0, 0])
+test_x.append([0, 1, 0])
+test_x.append([0, 1, 1])
+test_x.append([0, 1, 1])
+test_x.append([1, 1, 1])
+test_x.append([1, 1, 0])
+test_x.append([0, 1, 1])
 
 # teste y --> o resultado esperado dos animais misteriosos acima, para ver se o predict será correto
-testes_y = [1, 0, 0, 1, 1, 1, 1, 0]
+# 0 --> cachorro
+# 1 --> porco
+test_y = [1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1]
 
 # faz o predict dos misteriosos
-previsoes = model.predict(teste_x)
+predictions = model.predict(test_x)
 
-print(f"Predict List --> {previsoes}")
+print(f"Predict List --> {predictions}")
 
 # calculando a taxa de acerto (se o predict dos misteriosos é igual ao teste_y)
-taxa_de_acerto = accuracy_score(testes_y, previsoes)
-print(f"Taxa de Acerto --> {taxa_de_acerto * 100}%")
+accuracy = accuracy_score(test_y, predictions)
+print(f"Taxa de Acerto --> {accuracy * 100}%")
