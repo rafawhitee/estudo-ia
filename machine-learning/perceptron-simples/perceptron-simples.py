@@ -2,18 +2,14 @@ import numpy as np
 
 # classe que representa o Perceptron
 
-
-class Perceptron:
+# Fluxo
+#  1) É executado a função do campo induzido
+#  2) com o retorno do campo induzido é passado para a função de ativação (bipolar por exemplo) e ali ai ver se irá ativar o neurônio ou não
+class Perceptron():
     def __init__(self, total_features):
         # Inicialização aleatória dos pesos e bias
         self.weights = np.random.rand(total_features)
         self.bias = np.random.rand()
-
-    # para realizar previsões de novas entradas
-    def predict(self, inputs):
-        # Calcula o valor de ativação (campo induzido)
-        activation = np.dot(self.weights, inputs) + self.bias
-        return self.bipolar_activation(activation)
 
     # função de ativação (bipolar)
     #   neurônio disparar --> retorna 1
@@ -31,6 +27,12 @@ class Perceptron:
                 # Atualiza os pesos e bias
                 self.weights += learning_rate * error * inputs
                 self.bias += learning_rate * error
+
+    # para realizar previsões de novas entradas
+    def predict(self, inputs):
+        # Calcula o valor de ativação (campo induzido)
+        activation = np.dot(self.weights, inputs) + self.bias
+        return self.bipolar_activation(activation)
 
 
 # total de features (eixo x)
