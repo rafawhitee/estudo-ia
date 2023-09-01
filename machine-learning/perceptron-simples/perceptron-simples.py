@@ -1,15 +1,16 @@
 import numpy as np
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # classe que representa o Perceptron
-
 # Fluxo
 #  1) É executado a função do campo induzido
 #  2) com o retorno do campo induzido é passado para a função de ativação (bipolar por exemplo) e ali ai ver se irá ativar o neurônio ou não
 class Perceptron():
-    def __init__(self, total_features):
-        # Inicialização aleatória dos pesos e bias
-        self.weights = np.random.rand(total_features)
-        self.bias = np.random.rand()
+    def __init__(self, features = None, weights = None, bias = None):
+        self.weights = weights if weights != None else np.random.rand(features)
+        self.bias = bias if bias != None else np.random.rand()
 
     # função de ativação (bipolar)
     #   neurônio disparar --> retorna 1
@@ -20,13 +21,28 @@ class Perceptron():
     # para treinar o Perceptron
     def train(self, training_data, epochs, learning_rate):
         for _ in range(epochs):
+            logging.debug(f"self.weights ==> {self.weights}")
+            logging.debug(f"self.bias ==> {self.bias}")
+            logging.debug("\n")
             for inputs, target in training_data:
+                logging.debug(f"inputs ==> {inputs}")
+                logging.debug(f"target ==> {target}")
+
                 prediction = self.predict(inputs)
+                logging.debug(f"prediction ==> {prediction}")
+
                 error = target - prediction
+                logging.debug(f"error ==> {error}")
 
                 # Atualiza os pesos e bias
-                self.weights += learning_rate * error * inputs
-                self.bias += learning_rate * error
+                if(error != 0):
+                    logging.debug("Error diferente de 0, atualizando weights e bias")
+                    self.weights += learning_rate * error * inputs
+                    self.bias += learning_rate * error
+                    logging.debug(f"Novo Valor do Weights ==> {self.weights}")
+                    logging.debug(f"Novo Valor do Bias ==> {self.bias}")
+
+                logging.debug("\n")
 
     # para realizar previsões de novas entradas
     def predict(self, inputs):
@@ -37,7 +53,7 @@ class Perceptron():
 
 # total de features (eixo x)
 #  se modificar aqui, tem que editar também no training_data e new_data
-total_features = 2
+features = 2
 
 # Dados de treinamento, que são as features (eixo x) --> peso e textura
 training_data = [
@@ -55,8 +71,8 @@ new_data = [
 ]
 
 # Criação e Treinamento do perceptron
-perceptron = Perceptron(total_features=total_features)
-perceptron.train(training_data, epochs=90000, learning_rate=0.11)
+perceptron = Perceptron(features=features)
+perceptron.train(training_data, epochs=50000, learning_rate=0.10)
 
 
 for data in new_data:
