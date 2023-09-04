@@ -1,3 +1,4 @@
+## https://www.youtube.com/watch?v=AcYHsKlIj5E&list=PLZj-vsMJRNhprMuIaE6HXmOkHh0NEEMtL&index=6&ab_channel=Intelig%C3%AAnciaArtificialnaPr%C3%A1tica ##
 import numpy as np
 import matplotlib.pyplot as plt
    
