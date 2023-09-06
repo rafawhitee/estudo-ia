@@ -1,4 +1,6 @@
-# Projeto utilizando SKLearn do Python para adivinhar por Machine Learning se é 'Porco' ou 'Cachorro'
+# Projetos utilizando SKLearn do Python
+
+### https://cursos.alura.com.br/course/machine-learning-introducao-a-classificacao-com-sklearn
 
 ### Cachorro ou Porco
 Machine Learning para fazer o predict a partir de algumas features, se é 'Porco' ou 'Cachorro'

@@ -1,9 +1,7 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import graphviz
 from datetime import datetime
-from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
