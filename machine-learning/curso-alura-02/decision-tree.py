@@ -1,7 +1,8 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import BernoulliNB
+from sklearn.tree import DecisionTreeClassifier
+
 
 dados = pd.read_csv('clientes.csv')
 
@@ -37,7 +38,7 @@ X_treino, X_teste, Y_treino, Y_teste = train_test_split(
     X_normalizado, Y, test_size=0.3, random_state=123)
 
 # model
-model = BernoulliNB(binarize=0.44)
+model = DecisionTreeClassifier(criterion='entropy', random_state=42)
 
 # treina
 model.fit(X_treino, Y_treino)
