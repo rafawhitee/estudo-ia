@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
 
 dados = pd.read_csv('clientes.csv')
 
@@ -44,14 +45,15 @@ print(
 #####
 
 X_treino, X_teste, Y_treino, Y_teste = train_test_split(
-    X_normalizado, Y, test_size=0.3, random_state=123)
+    X_normalizado, Y, test_size=0.1, random_state=123)
 
 knn = KNeighborsClassifier(metric='euclidean')
 
 knn.fit(X_treino, Y_treino)
 
-predict_knn = knn.predict(X_teste)
-print(f"predict_knn: {predict_knn}")
+predict = knn.predict(X_teste)
 
-predict_maria_knn = knn.predict(X_Maria)
-print(f"predict_maria_knn: {predict_maria_knn}")
+print(f"confusion_matrix nearest-neighbors: {confusion_matrix(Y_teste, predict)}")
+print(f"accuracy_score nearest-neighbors: {accuracy_score(Y_teste, predict)}")
+print(f"precision_score nearest-neighbors: {precision_score(Y_teste, predict)}")
+print(f"recall_score nearest-neighbors: {recall_score(Y_teste, predict)} \n\n")
