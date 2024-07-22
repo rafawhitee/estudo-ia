@@ -10,8 +10,10 @@ iris = load_iris()
 X = iris.data
 y = iris.target
 
+random_state = 42
+
 # Dividir o dataset em conjuntos de treinamento e teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=random_state)
 
 
 nome_arquivo_modelo = 'random_forest_model.pkl'
@@ -20,7 +22,7 @@ try:
     model = joblib.load(nome_arquivo_modelo)
 except:
     print("Não conseguiu carregar o PKL, criando o Modelo para treinar")
-    model = RandomForestClassifier(random_state=42) # Inicializa o modelo RandomForestClassifier
+    model = RandomForestClassifier(random_state=random_state) # Inicializa o modelo RandomForestClassifier
     model.fit(X_train, y_train) # Treina o modelo
     joblib.dump(model, nome_arquivo_modelo) # Salva o modelo treinado no arquivo
 
