@@ -18,13 +18,12 @@ https://cursos.alura.com.br/course/machine-learning-classificacao-tras-panos
 https://cursos.alura.com.br/course/machine-learning-validando-modelos
 
 #### Primeira Parte (Cross Validate)
-- Para não ter que tomar decisões baseados em uma única execução do código de Machine Learning (que envolve aleatoriedade), entra a Validação Cruzada.
+- Para não ter que tomar decisões baseadas em uma única execução do código de Machine Learning (que envolve aleatoriedade), entra a Validação Cruzada.
 
-- Com a validação cruzada você divide os dados em partes e roda o algoritmo N vezes, e vez que roda, o algoritmo terá uma nova "população" de treino e de teste.
+- Com a validação cruzada você divide os dados em partes e roda o algoritmo N vezes, e cada vez que roda, o algoritmo terá uma nova "população" de treino e de teste.
 ```python
 resultado = cross_validate(modelo, x, y, cv = 5) # o cv é o parâmetro onde você passa em quantas vezes você deseja quebrar (e consequentemente rodar os treinamentos/testes)
 ```
-
 
 #### Segunda Parte (Cross Validate com Aleatoriedade)
 - No código da primeira parte, a gente usou o modelo "Árvore de Decisão" junto com o Cross Validate, mas para deixar o código melhor, existe uma maneira de fazer uma aleatoriedade 
@@ -63,6 +62,23 @@ Usando o Modelo GroupKFold que trata essa questão de agrupamento
 ```python
 cv = GroupKFold(n_splits = 10)
 resultado = cross_validate(modelo, x, y, cv = cv, groups=dados["modelo_carro_aleatorio"])
+```
+
+#### Quinta Parte (Pipeline)
+- Podemos criar um Pipeline com o Scikit Learn e nele podemos passar o passo a passo e ele se torna nosso modelo.
+
+- Então se a gente tem um algoritmo que faz um pré-processamento e depois faz o treino (fit), por final fazer o predict, com o pipeline fica mais prático.
+```python
+scaler = StandardScaler()
+modelo = SVC()
+
+# cria o pipeline, falando que o primeiro passado será a transformação (id do primeiro passo), que usará o Standard Scaler
+# o segundo passo do pipeline será o estimador (modelo SVC)
+pipeline = Pipeline([('transformacao', scaler), ('estimador', modelo)])
+
+# chama o cross_validate, no caso o modelo, vai ser o pipeline
+cv = GroupKFold(n_splits = 10)
+resultado = cross_validate(pipeline, x, y, cv = cv, groups=dados["modelo_carro_aleatorio"])
 ```
 
 ## Otimização
