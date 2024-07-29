@@ -1,5 +1,11 @@
 # ::computer:: Estudo de Inteligência Artificial
 
+
+## Pré Processamento
+
+### Curso IA Academy
+https://iaexpert.academy/cursos-online-assinatura/machine-learning-data-science-python-az/
+
 ## ChatGPT
 
 ## Deep Learning
@@ -72,9 +78,9 @@ resultado = cross_validate(modelo, x, y, cv = cv, groups=dados["modelo_carro_ale
 scaler = StandardScaler()
 modelo = SVC()
 
-# cria o pipeline, falando que o primeiro passado será a transformação (id do primeiro passo), que usará o Standard Scaler
+# cria o pipeline, falando que o primeiro passo será a transformação, que usará o Standard Scaler
 # o segundo passo do pipeline será o estimador (modelo SVC)
-pipeline = Pipeline([('transformacao', scaler), ('estimador', modelo)])
+pipeline = Pipeline([('transformacao', scaler), ('estimador', modelo)]) # aqui você passa o ID/Nome do passo atual e a instância do que ele irá fazer
 
 # chama o cross_validate, no caso o modelo, vai ser o pipeline
 cv = GroupKFold(n_splits = 10)
