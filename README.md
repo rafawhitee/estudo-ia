@@ -1,1 +1,1 @@
-# ::computer:: Estudo de Inteligência Artificial
+# Estudo de Inteligência Artificial
