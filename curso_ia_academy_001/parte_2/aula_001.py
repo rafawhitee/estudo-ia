@@ -21,13 +21,13 @@ X_risco_credito[:, 3] = label_encoder_renda.fit_transform(X_risco_credito[:, 3])
 
 # Instancia o modelo Guaussian do Naive Bayes
 naive_risco_credito = GaussianNB()
-
+ 
 # Treina os dados para gerar a tabela de probabilidade
 naive_risco_credito.fit(X_risco_credito, Y_risco_credito)
 
 # Faz uma previsão, após treinar os dados e gerar a tabela de probabilidade
 # 1) história boa, dívida alta, nenhuma garantia, renda maior que 35 mil
-previsao = naive_risco_credito.predict([[0, 0, 1, 2]]) # os valores numéricos são os representantes das categorias pelo LabelEncoder
+previsao = naive_risco_credito.predict([[0, 0, 1, 2]]) # os valoresnuméricos são os representantes das categorias pelo LabelEncoder
 print(f"previsao --> {previsao}")
 
 # Faz uma segunda previsão
