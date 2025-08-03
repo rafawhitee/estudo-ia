@@ -6,4 +6,8 @@
 *.class
 *.pyc
 
+/.vs
+/.vscode
+/.idea
+/.DS_Store
 
