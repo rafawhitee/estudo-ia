@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from sympy import symbols, Matrix, factor, Eq, solve
+from sympy import symbols, Matrix, Eq, solve
 
 ###
 ### MÉTODOS UTILS
@@ -56,12 +56,14 @@ ex_2_Matrix = Matrix([
     [ex_2_B[0],  ex_2_B[1], 1],
     [ex_2_C[0],  ex_2_C[1], 1]
 ])
-# calcula
+# mostra a matriz
 print(f"\t matriz do exercício 2: {ex_2_Matrix}")
 
+# calcula o determinante da matriz, como tem variável, irá resultar em uma equação
 ex_2_Matrix_det = ex_2_Matrix.det()
 print(f"\t Determinante: {ex_2_Matrix_det}")
 
+# resolve a equação do determinante, igualando a 0 e passando os símbolos (variáveis) da equação
 sol = solve(Eq(ex_2_Matrix_det, 0), c)
 print(f"\t Valores possíveis de c: {sol}")
 
