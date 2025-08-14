@@ -14,7 +14,19 @@ def ponto_medio_2d(p1, p2):
 
 A = (0, 0)
 B = (3, 4)
+
 print(f"Ponto médio entre A{A} e B{B}: {ponto_medio_2d(A, B)}")
+
+# Exemplo do baricentro de um triângulo
+# O baricentro é o ponto de encontro das medianas de um triângulo
+# Para os vértices A(x1, y1), B(x2, y2), C(x3, y3):
+# Baricentro G = ((x1 + x2 + x3)/3, (y1 + y2 + y3)/3)
+def baricentro(A, B, C):
+    return ((A[0] + B[0] + C[0])/3, (A[1] + B[1] + C[1])/3)
+
+# Exemplo prático:
+C = (6, 1) # define um novo ponto para formular um triângulo ABC
+print(f"Baricentro do triângulo de vértices A{A}, B{B}, C{C}: {baricentro(A, B, C)}")
 
 def ponto_medio_3d(p1, p2):
     # p1 e p2 são tuplas (x, y, z)
