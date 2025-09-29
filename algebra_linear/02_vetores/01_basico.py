@@ -8,7 +8,7 @@ import numpy as np
 #####
 print("\n Criando vetores:")
 v1 = np.array([2, 3])
-v2 = np.array([2, 3])
+v2 = np.array([3, 5])
 v3 = np.array([1, 4])
 
 print("\t v1:", v1)
