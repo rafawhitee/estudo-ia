@@ -16,8 +16,9 @@ cos_theta = dot_product / (norm_v1 * norm_v2)
 
 # Ângulo em radianos
 theta_rad = np.arccos(cos_theta)
+print(f"Ângulo em radianos entre v1 e v2: {theta_rad:.2f} radianos")
 
 # Ângulo em graus
 theta_deg = np.degrees(theta_rad)
 
-print(f"Ângulo entre v1 e v2: {theta_deg:.2f} graus")
+print(f"Ângulo em graus entre v1 e v2: {theta_deg:.2f} graus")
