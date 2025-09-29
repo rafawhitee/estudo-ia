@@ -22,7 +22,8 @@ print("\n Igualdade de vetores:")
 print("\t v1 é igual a v2?", np.array_equal(v1, v2))  # True
 print("\t v1 é igual a v3?", np.array_equal(v1, v3))  # False
 
-# Módulo (norma) do vetor
+# Norma do vetor --> distância da origem até o ponto representado pelo vetor
+# Também chamado de módulo do vetor
 modulo_v1 = np.linalg.norm(v1)
 print("\n Módulo (norma) de v1:", modulo_v1)
 
@@ -57,24 +58,6 @@ print("\t 5. Vetor linha:", linha)
 # 6. Vetor coluna
 coluna = np.array([[1], [2], [3]])
 print("\t 6. Vetor coluna:\n", coluna)
-
-# Soma de vetores
-soma = v1 + v3
-print("\n Soma de v1 e v3:", soma)
-
-# Subtração de vetores
-subtracao = v1 - v3
-print("\n Subtração de v1 e v3:", subtracao)
-
-# Produto escalar (dot product)
-# Mede o quanto dois vetores apontam na mesma direção
-produto_escalar = np.dot(v1, v3)
-print("\n Produto escalar de v1 e v3:", produto_escalar)
-
-# Multiplicação por escalar
-escalar = 2
-multiplicacao = escalar * v1
-print("\n Multiplicação de v1 por escalar:", multiplicacao)
 
 # Direção e sentido
 # Vetores têm direção (orientação) e sentido (para onde apontam)
